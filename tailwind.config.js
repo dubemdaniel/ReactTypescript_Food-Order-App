@@ -2,7 +2,12 @@
 export default {
   content: ["./src/**/*.{html,js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        lato: "Lato",
+        raleway: "Raleway",
+      }
+    },
   },
   plugins: [],
 }
