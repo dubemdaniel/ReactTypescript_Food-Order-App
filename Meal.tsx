@@ -1,9 +1,4 @@
-import Header from "./components/Header"
-import Meal from "./components/Meal"
-function App() {
-
- 
- const meals = [
+[
     {
       "id": 1,
       "name": "Grilled Chicken Salad",
@@ -231,15 +226,3 @@ function App() {
     }
 ]
   
-
-  return (
-    <>
-      <div className="bg-gradient-to-r  from-[#29251c] to-[#2c2306] h-screen font-raleway ">
-        <Header />
-        <Meal meal={ meals} />
-     </div>
-    </>
-  )
-}
-
-export default App
