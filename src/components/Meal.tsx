@@ -1,37 +1,22 @@
 import React, { useState, useEffect } from 'react'
 
-interface Meal {
+
+interface IMeal {
     id: number;
     name: string;
     description: string;
     price: number;
     image: string;
   }
-const Meal = (props:Meal[]) => {
-    // const [loadedMeals, setLoadedMeals] = useState([])
+  interface Props {
+    meals: IMeal[];
+  }
 
-    // useEffect(() => {
-    //     async function fetchMeals() {
-
-    //         // const DummyApi = "/"
-
-    //         const response = await fetch('http://localhost:3000/meals');
-
-    //         if (!response.ok) {
-            
-    //         }
-
-
-    //         const meals = await response.json();
-    //         setLoadedMeals(meals)
-    //     }
-    // fetchMeals()
-
-    // },[])
-
+//   const FoodComponent: React.FC<Props> = ({ foodItems }) =>
+const Meal: React.FC<Props> = (props) => {
     
 
-    return <ul className='"grid grid-cols-1 sm:grid-cols-auto-fit sm:grid-cols-minmax-20rem sm:grid-cols-1fr"'>{props.map(meal => <li key={meal.id}>{ meal.name}</li>) }</ul>
+    return <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 px-4" >{props.meals.map(meal => <li key={meal.id} className="w-full h-auto"><img src={ meal.image} alt={meal.name} className=''/></li>) }</ul>
 }
 
 export default Meal
