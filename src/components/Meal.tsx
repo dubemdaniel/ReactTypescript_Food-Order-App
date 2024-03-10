@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import MealItem from './MealItem';
 
 
 interface IMeal {
@@ -16,7 +17,10 @@ interface IMeal {
 const Meal: React.FC<Props> = (props) => {
     
 
-    return <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 px-4" >{props.meals.map(meal => <li key={meal.id} className="w-full h-auto"><img src={ meal.image} alt={meal.name} className=''/></li>) }</ul>
+    return <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 px-4" >{props.meals.map(meal =>
+        (<MealItem key={meal.id} meal={meal } />))}
+      </ul>
+    
 }
 
 export default Meal
