@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+// import React, { useState, useEffect } from 'react'
 import MealItem from './MealItem';
 
 
-interface IMeal {
+interface IMeal  {
     id: number;
     name: string;
     description: string;
@@ -10,15 +10,15 @@ interface IMeal {
     image: string;
   }
   interface Props {
-    meals: IMeal[];
+      meals: IMeal[];
   }
 
 //   const FoodComponent: React.FC<Props> = ({ foodItems }) =>
 const Meal: React.FC<Props> = (props) => {
     
 
-    return <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 px-4" >{props.meals.map(meal =>
-        (<MealItem key={meal.id} meal={meal } />))}
+    return <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 px-4 max-w-screen-lg m-auto" >{props.meals.map(el =>
+        (<MealItem key={el.id} meal = { el}  />))}:
       </ul>
     
 }
