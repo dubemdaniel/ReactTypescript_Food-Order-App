@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import currencyFormatter from '../util/formatter';
+import Button from './UI/Button';
+import CartContext from '../store/CartContext';
 
 interface IMeal {
     id: number;
@@ -13,7 +15,12 @@ interface IMeal {
       meal:IMeal
   }
   
-const MealItem : React.FC<Props> = (props) => {
+const MealItem: React.FC<Props> = (props) => {
+    const cartCtx = useContext(CartContext)
+
+    const handleMealToCart = () => {
+        cartCtx.addItem(props.meal)
+    }
   return (
       <li className='bg-[#1d1a16] overflow-hidden rounded-lg text-center shadow-sm text-white'>
           <article className='flex flex-col justify-between h-full'>
@@ -24,7 +31,7 @@ const MealItem : React.FC<Props> = (props) => {
                   <p>{ props.meal.description}</p>
               </div>
               <p>
-                  <button className='mb-2'>Add to cart</button>
+                  <Button onClick={handleMealToCart}>Add to cart</Button>
               </p>
           </article>
     </li>

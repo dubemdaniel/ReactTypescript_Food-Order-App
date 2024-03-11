@@ -1,5 +1,7 @@
 import Header from "./components/Header"
 import Meal from "./components/Meal"
+import { CartContextProvider } from "./store/CartContext"
+
 function App() {
   
    const meals = [
@@ -148,10 +150,12 @@ function App() {
 
   return (
     <>
+      <CartContextProvider>
       <div className="bg-gradient-to-r  from-[#29251c] to-[#2c2306] h-full font-raleway ">
         <Header />
         <Meal meals={meals}  />
      </div>
+     </CartContextProvider>
     </>
   )
 }
