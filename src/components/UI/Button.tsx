@@ -1,6 +1,6 @@
 import React from 'react'
 
-type Tchildren = string | number
+type Tchildren = string | number |any
 
 interface Props {
     children: Tchildren,

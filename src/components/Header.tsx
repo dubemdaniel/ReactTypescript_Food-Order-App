@@ -8,7 +8,7 @@ import CartContext from '../store/CartContext'
 const Header = () => {
     const cartCtx = useContext(CartContext) 
 
-    const totalCartItems = cartCtx.items.reduce((totalNumberOfItems, item) => {
+    const totalCartItems:any = cartCtx.items.reduce((totalNumberOfItems, item) => {
         return totalNumberOfItems + item.quantity;
      }, 0)
     
