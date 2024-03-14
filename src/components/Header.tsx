@@ -3,10 +3,12 @@ import { useContext } from 'react'
 import logo from '../assets/logo/logo.png'
 import Button from './UI/Button'
 import CartContext from '../store/CartContext'
+import userProgressContext from '../store/UserProgressContext'
 
 
 const Header = () => {
     const cartCtx = useContext(CartContext) 
+    const userProgressCtx = useContext(userProgressContext)
 
     const totalCartItems:any = cartCtx.items.reduce((totalNumberOfItems, item) => {
         return totalNumberOfItems + item.quantity;

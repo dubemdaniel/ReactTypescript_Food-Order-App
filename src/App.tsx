@@ -1,6 +1,7 @@
 import Header from "./components/Header"
 import Meal from "./components/Meal"
 import { CartContextProvider } from "./store/CartContext"
+import { UserProgressProvider } from "./store/UserProgressContext"
 
 function App() {
   
@@ -149,13 +150,14 @@ function App() {
   ]
 
   return (
-    <>
-      <CartContextProvider>
-      <div className="bg-gradient-to-r  from-[#29251c] to-[#2c2306] h-full font-raleway ">
-        <Header />
-        <Meal meals={meals}  />
-     </div>
-     </CartContextProvider>
+    <><UserProgressProvider>
+         <CartContextProvider>
+          <div className="bg-gradient-to-r  from-[#29251c] to-[#2c2306] h-full font-raleway ">
+            <Header />
+            <Meal meals={meals}  />
+          </div>
+          </CartContextProvider>
+      </UserProgressProvider>
     </>
   )
 }
