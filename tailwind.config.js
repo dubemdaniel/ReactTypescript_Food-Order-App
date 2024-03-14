@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         lato: "Lato",
         raleway: "Raleway",
+      },
+      animation: {
+        custom_Fade_slide_up:'fade-slide-up 0.3s ease-out forwards'
       }
     },
   },
