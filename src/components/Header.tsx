@@ -7,12 +7,16 @@ import userProgressContext from '../store/UserProgressContext'
 
 
 const Header = () => {
-    const cartCtx = useContext(CartContext) 
+    const cartCtx = useContext(CartContext)
     const userProgressCtx = useContext(userProgressContext)
 
-    const totalCartItems:any = cartCtx.items.reduce((totalNumberOfItems, item) => {
+    const totalCartItems: any = cartCtx.items.reduce((totalNumberOfItems, item) => {
         return totalNumberOfItems + item.quantity;
-     }, 0)
+    }, 0)
+    
+    const handleShowCart = () => {
+        userProgressCtx.showCart()
+    }
     
   return (
       <header className='flex justify-center items-center md:space-x-[80%] space-x-32 px-4 py-2 lg:space-x-[58%]'>
@@ -21,7 +25,7 @@ const Header = () => {
               <h1 className='text-[#ffc404] uppercase tracking-wider font-bold'>Dubem-Foods</h1>
           </div>
           <nav>
-              <Button textOnly >Cart ({ totalCartItems})</Button>
+              <Button textOnly onClick={handleShowCart}>Cart ({ totalCartItems})</Button>
           </nav>
     </header>
   )

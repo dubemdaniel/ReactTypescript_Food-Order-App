@@ -8,10 +8,19 @@ const slide = 'bg-[#e4ddd4] rounded-sm border-none p-4 w-[80%] md:max-w-[40rem] 
 const Modal = ({ children, open }: any) => {
   const dialog:any = useRef()
 
+
   useEffect(() => {
+
+    const modal = dialog.current
+
     if (open) {
-      dialog.current.showModal()
+      modal.showModal()
     }
+
+    return () => {
+      modal.close()
+    }
+
   }, [open])
 
   return (

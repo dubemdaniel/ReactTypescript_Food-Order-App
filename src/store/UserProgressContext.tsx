@@ -1,4 +1,5 @@
 import React, { createContext } from 'react'
+import { useState } from 'react';
 
  interface IuserProgress{
     progress: string;
@@ -42,7 +43,7 @@ export const UserProgressProvider = ({ children }:any) => {
     }
 
     return (
-        <userProgressContext.Provider value={userProgress}>
+        <userProgressContext.Provider value={userProgressCtx}>
             {children}
         </userProgressContext.Provider>
     )
