@@ -19,18 +19,22 @@ const Checkout = () => {
         userProgressCtx.hideCheckout()
     }
 
+    const handleSubmit = (event:any) => {
+        event.preventDefault()
+    }
+
   return (
-      <Modal open={userProgressCtx.progress === 'checkout'}>
-          <form>
-              <h2>Checkout</h2>
-              <p>Total Amount: {currencyFormatter.format(cartTotal)}</p>
-              <Input label="Full Name" type="text" id="full-name" />
+      <Modal open={userProgressCtx.progress === 'checkout'} onclose={handleClose}>
+          <form onSubmit={handleSubmit}>
+              <h2 className='font-bold text-lg'>Checkout</h2>
+              <p>Total Amount: <span className='font-bold'>{currencyFormatter.format(cartTotal)}</span></p>
+              <Input  label="Full Name" type="text" id="full-name" />
               <Input label="E-mail Address " type="email" id="email" />
               <Input label="Street" type="text" id="street" />
-              <div className='flex justify-start gap-1'>
+              {/* <div className='sm:flex sm:justify-start gap-1'> */}
                   <Input label="Postal Code" type= "text" id="postal-code" />
-                  <Input label="City" type="text" id="city" />
-              </div>
+                  <Input className='block' label="City" type="text" id="city" />
+              {/* </div> */}
               <p className='flex justify-end gap-1'>
                   <Button textOnly type="text" onClick={handleClose}>Close</Button>
                   <Button >Submit Order</Button>

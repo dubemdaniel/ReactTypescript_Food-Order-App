@@ -42,11 +42,15 @@ const Cart: React.FC = () => {
     0
   );
 
-    const handleGoToCheckout = () => {
-        userProgressCtx.showCheckout()
-    }
+  const handleGoToCheckout = () => {
+    userProgressCtx.showCheckout();
+  };
   return (
-    <Modal open={userProgressCtx.progress === "cart"} className="">
+    <Modal
+      open={userProgressCtx.progress === "cart"}
+      className=""
+      onclose={userProgressCtx.progress === "cart" ? handleCloseCart : null}
+    >
       <h2 className="font-bold mx-4 my-2 ">Your Cart</h2>
       <ul className="list-none p-0 px-4">
         {cartCtx.items.map((item) => (
@@ -75,7 +79,9 @@ const Cart: React.FC = () => {
         <Button textOnly onClick={handleCloseCart}>
           Close
         </Button>
-        {cartCtx.items.length > 0 && <Button onClick={handleCloseCart}>Go to Checkout</Button>}
+        {cartCtx.items.length > 0 && (
+          <Button onClick={handleGoToCheckout}>Go to Checkout</Button>
+        )}
       </p>
     </Modal>
   );

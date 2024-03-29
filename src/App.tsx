@@ -3,6 +3,7 @@ import Meal from "./components/Meal"
 import { CartContextProvider } from "./store/CartContext"
 import { UserProgressProvider } from "./store/UserProgressContext"
 import Cart from "./components/Cart"
+import Checkout from "./components/Checkout"
 function App() {
   
    const meals = [
@@ -155,7 +156,8 @@ function App() {
           <div className="bg-gradient-to-r  from-[#29251c] to-[#2c2306] h-full font-raleway ">
             <Header />
           <Meal meals={meals} />
-          <Cart/>
+          <Cart />
+          <Checkout/>
           </div>
           </CartContextProvider>
       </UserProgressProvider>

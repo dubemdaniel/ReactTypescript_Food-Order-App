@@ -5,7 +5,7 @@ const modal:  HTMLDialogElement | null = document.getElementById('modal') as HTM
 
 const slide = 'bg-[#e4ddd4] rounded-sm border-none p-4 w-[80%] md:max-w-[40rem] shadow-md opacity-60 animate-custom_Fade_slide_up'
 
-const Modal = ({ children, open }: any) => {
+const Modal = ({ children, open , onclose}: any) => {
   const dialog = useRef<HTMLDialogElement>(null);
   // const dialog:any = useRef()
 
@@ -29,7 +29,7 @@ const Modal = ({ children, open }: any) => {
   }, [open])
 
   return (
-    createPortal(<dialog className={slide} ref={dialog}>{children}</dialog>, modal)
+    createPortal(<dialog className={slide} ref={dialog} onClose={onclose}>{children}</dialog>, modal)
     
     )
 }

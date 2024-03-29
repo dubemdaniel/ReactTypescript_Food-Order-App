@@ -12,14 +12,14 @@ interface ICartItem {
 const CartItem = ({name, quantity,price,onDecrease,onIncrease}:ICartItem) => {
   return (
    
-      <li>
+      <li className='flex justify-between font-lato text-lg'>
           <p>
               {name} - {quantity} x {currencyFormatter.format(price)}
           </p>
-          <p className='gap-2 flex'>
-              <button onClick={onDecrease} className='bg-black text-white rounded-full w-6'>-</button>
+          <p className='gap-2 flex flex-grow-0 items-center '>
+              <button onClick={onDecrease} className='bg-black text-white rounded-full px-[0.555rem]'>-</button>
               <button>{quantity}</button>
-              <button onClick={onIncrease} className='bg-black text-white rounded-full w-6'>+</button>
+              <button onClick={onIncrease} className='bg-black text-white rounded-full px-2 '>+</button>
           </p>
       </li>
   )

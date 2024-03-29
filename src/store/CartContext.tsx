@@ -49,7 +49,7 @@ const cartReducer = (state: ICartContext, action: IAction): ICartContext => {
     return { ...state, items: updatedItems };
   }
   if (action.type === "REMOVE_ITEM") {
-    let stateItems = [...state.items];
+    const stateItems = [...state.items];
     const existingCartItemIndex = stateItems.findIndex(
       (item) => item.id === action.payload
     );
@@ -58,20 +58,16 @@ const cartReducer = (state: ICartContext, action: IAction): ICartContext => {
       const existingCartItem = stateItems[existingCartItemIndex];
       
       if (existingCartItem) {
-        // if the quantity is > 1 then we reduce the quantity ELSE we will remove the item
         if (existingCartItem.quantity > 1) {
-          // reduce the quantity
-          existingCartItem.quantity = existingCartItem.quantity - 1;
-
-          stateItems[existingCartItemIndex] = existingCartItem;
-        //   return { ...state, items: stateItems };
+          // Reduce quantity by 1
+          const updatedCartItem = {
+            ...existingCartItem,
+            quantity: existingCartItem.quantity - 1
+          };
+          stateItems[existingCartItemIndex] = updatedCartItem;
         } else {
-          // remove the item
-          const newStateItems = stateItems.filter(
-            (item) => item.id !== existingCartItem.id
-          );
-
-          stateItems = [...newStateItems];
+          // Remove item
+          stateItems.splice(existingCartItemIndex, 1);
         }
       }
     }
@@ -79,7 +75,41 @@ const cartReducer = (state: ICartContext, action: IAction): ICartContext => {
     return { ...state, items: stateItems };
   }
 
+  // Return state if action type is not "REMOVE_ITEM"
   return state;
+  
+  // if (action.type === "REMOVE_ITEM") {
+  //   let stateItems = [...state.items];
+  //   const existingCartItemIndex = stateItems.findIndex(
+  //     (item) => item.id === action.payload
+  //   );
+
+  //   if (existingCartItemIndex > -1) {
+  //     const existingCartItem = stateItems[existingCartItemIndex];
+      
+  //     if (existingCartItem) {
+  //       // if the quantity is > 1 then we reduce the quantity ELSE we will remove the item
+  //       if (existingCartItem.quantity > 1) {
+  //         // reduce the quantity
+  //         existingCartItem.quantity = existingCartItem.quantity - 1;
+
+  //         stateItems[existingCartItemIndex] = existingCartItem;
+  //       //   return { ...state, items: stateItems };
+  //       } else {
+  //         // remove the item
+  //         const newStateItems = stateItems.filter(
+  //           (item) => item.id !== existingCartItem.id
+  //         );
+
+  //         stateItems = [...newStateItems];
+  //       }
+  //     }
+  //   }
+
+  //   return { ...state, items: stateItems };
+  // }
+
+  // return state;
 };
 
 export const CartContextProvider: any = ({ children }: any) => {
