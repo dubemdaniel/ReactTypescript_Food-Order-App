@@ -7,7 +7,8 @@ interface IMeal  {
     name: string;
     description: string;
     price: number;
-    image: string;
+  image: string;
+  // quantity: number
   }
   interface Props {
       meals: IMeal[];

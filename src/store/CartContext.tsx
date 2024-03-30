@@ -6,7 +6,18 @@ interface IItem {
   name: string;
   price: number;
   id: number;
-}
+  description: string;
+  
+}[]
+// export const ItemList = createContext<IItem[]>([]);
+
+// const itemReducer = (state: IItem[], action: any) => {
+//   switch (action.type) {
+//     case "ADD_ITEM": {
+//       return [...state, action.item];
+//     }
+//   }
+// }
 
 interface IAction {
   type: "ADD_ITEM" | "REMOVE_ITEM";

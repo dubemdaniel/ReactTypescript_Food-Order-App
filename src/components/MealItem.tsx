@@ -9,6 +9,7 @@ interface IMeal {
     description: string;
     price: number;
     image: string;
+    quantity:number
   }
   interface Props {
     //   meals: IMeal[];
@@ -19,7 +20,9 @@ const MealItem: React.FC<Props> = (props) => {
     const cartCtx = useContext(CartContext)
 
     const handleMealToCart = () => {
-        cartCtx.addItem(props.meal)
+        if (typeof cartCtx.addItem === "function") {
+            cartCtx.addItem(props.meal)
+        }
     }
   return (
       <li className='bg-[#1d1a16] overflow-hidden rounded-lg text-center shadow-sm text-white'>

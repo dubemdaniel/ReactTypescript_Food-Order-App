@@ -12,8 +12,8 @@ interface ICartItem {
 const CartItem = ({name, quantity,price,onDecrease,onIncrease}:ICartItem) => {
   return (
    
-      <li className='flex justify-between font-lato text-lg'>
-          <p>
+      <li className='flex justify-between font-lato text-lg '>
+          <p className='text-[#46443c] font-bold'>
               {name} - {quantity} x {currencyFormatter.format(price)}
           </p>
           <p className='gap-2 flex flex-grow-0 items-center '>
