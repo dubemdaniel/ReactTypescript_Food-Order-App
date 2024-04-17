@@ -72,7 +72,7 @@ const Cart: React.FC = () => {
           />
         ))}
       </ul>
-      <p className="flex justify-end my-[1rem] text-[#46443c] font-bold  text-lg">
+      <p className="flex justify-end my-[1rem] text-[#46443c] font-bold  text-lg mr-8">
         {currencyFormatter.format(cartTotal)}
       </p>
       <p className="justify-end flex gap-2 ">

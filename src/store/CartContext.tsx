@@ -20,20 +20,23 @@ interface IItem {
 // }
 
 interface IAction {
-  type: "ADD_ITEM" | "REMOVE_ITEM";
-  payload: IItem | number;
+  type: "ADD_ITEM" | "REMOVE_ITEM" | "CLEAR_CART";
+  payload?: IItem | number;
 }
 
 interface ICartContext {
   items: IItem[];
   addItem?: (item: IItem) => void;
   removeItem?: (id: number) => void;
+  clearAllItem?: () => void;
 }
 
 const CartContext = createContext<ICartContext>({
   items: [],
-  addItem: (item) => {},
-  removeItem: (id) => {},
+  addItem: (item) => { },
+  clearAllItem: () => {},
+  
+  removeItem: (id) => { },
 });
 
 const cartReducer = (state: ICartContext, action: IAction): ICartContext => {
@@ -85,6 +88,9 @@ const cartReducer = (state: ICartContext, action: IAction): ICartContext => {
 
     return { ...state, items: stateItems };
   }
+  if( action.type  === 'CLEAR_CART'){
+     return {...state , items : []}
+   }
 
   // Return state if action type is not "REMOVE_ITEM"
   return state;
@@ -135,10 +141,14 @@ export const CartContextProvider: any = ({ children }: any) => {
   const removeItem = (id: number) => {
     dispatch({ type: "REMOVE_ITEM", payload: id });
   };
+  const clearAllItem = () => {
+    dispatch({ type: "CLEAR_CART"});
+  };
   const cartContext = {
     items: cart.items,
     addItem,
     removeItem,
+    clearAllItem
   };
   console.log(cartContext);
 

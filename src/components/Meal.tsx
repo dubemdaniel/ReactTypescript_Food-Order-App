@@ -11,7 +11,7 @@ interface IMeal  {
   // quantity: number
   }
   interface Props {
-      meals: IMeal[];
+    meals: IMeal[];
   }
 
 //   const FoodComponent: React.FC<Props> = ({ foodItems }) =>
